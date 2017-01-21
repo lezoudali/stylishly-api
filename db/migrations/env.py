@@ -1,6 +1,10 @@
 from __future__ import with_statement
+
+import os
+
 from alembic import context
 from sqlalchemy import engine_from_config, pool
+from sqlalchemy.engine.url import URL
 from logging.config import fileConfig
 
 # this is the Alembic Config object, which provides
@@ -23,6 +27,18 @@ target_metadata = None
 # ... etc.
 
 
+def get_database_url():
+    connection_params = {
+        'username': os.getenv('STYLISHLY_DB_USERNAME', 'stylishly'),
+        'password': os.getenv('STYLISHLY_DB_PASSWORD', 'stylishly'),
+        'database': os.getenv('STYLISHLY_DB_DATABASE', 'stylishly'),
+        'host': os.getenv('STYLISHLY_DB_HOST', '127.0.0.1'),
+        'port': 5432
+    }
+
+    return URL('postgresql', **connection_params)
+
+
 def run_migrations_offline():
     """Run migrations in 'offline' mode.
 
@@ -35,7 +51,8 @@ def run_migrations_offline():
     script output.
 
     """
-    url = config.get_main_option("sqlalchemy.url")
+    url = get_database_url()
+
     context.configure(
         url=url, target_metadata=target_metadata, literal_binds=True)
 
