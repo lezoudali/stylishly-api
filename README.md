@@ -1,0 +1,14 @@
+# Getting Started
+
+### Setup your environment:
+
+Create a dedictated `Stylishly` directory and `cd` into:
+```sh
+$ mkdir stylishly && cd stylishly
+```
+Create a [virtualenv](https://docs.python.org/3/library/venv.html):
+
+```sh
+$ python3.6 -m venv ./env
+$ source ./env/bin/activate
+```
