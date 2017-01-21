@@ -1,6 +1,13 @@
-# Getting Started
+# Stylishy
 
-### Setup your environment:
+Repository for [Stylishly](http://stylishly.us/) REST API.
+
+
+## Table of Contents
+
+- [Setup](#setup-your-environment)
+
+## Setup your environment:
 
 Create a dedictated `Stylishly` directory and `cd` into:
 
