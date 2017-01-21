@@ -1,6 +1,10 @@
-# Getting Started
+# Stylishy
 
-### Setup your environment:
+## Table of Contents
+
+- [Setup](#setup)
+
+## Setup your environment:
 
 Create a dedictated `Stylishly` directory and `cd` into:
 
