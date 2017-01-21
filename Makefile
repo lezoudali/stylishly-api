@@ -10,5 +10,5 @@ isort:
 	isort rc db  # TODO don't forget add other directories
 	isort rc tests
 
-test:
+test: flake
 	python -m pytest

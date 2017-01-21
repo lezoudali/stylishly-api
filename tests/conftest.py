@@ -19,7 +19,7 @@ def connection_params():
 
 
 @pytest.fixture(scope='function')
-def session(connection_params, request):
+def session(connection_params):
     """Returns a SQLA database session"""
     engine = create_engine(**connection_params)
     connection = engine.connect()
