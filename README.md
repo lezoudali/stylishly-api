@@ -1,5 +1,8 @@
 # Stylishy
 
+Repository for [Stylishly](http://stylishly.us/) REST API.
+
+
 ## Table of Contents
 
 - [Setup](#setup-your-environment)
