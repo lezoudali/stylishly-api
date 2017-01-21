@@ -1,4 +1,5 @@
 import sqlalchemy as sa
+from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.engine.url import URL
 from sqlalchemy.orm import scoped_session, sessionmaker
 
