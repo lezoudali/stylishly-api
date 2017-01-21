@@ -2,7 +2,7 @@
 
 ## Table of Contents
 
-- [Setup](#setup)
+- [Setup](#setup-your-environment)
 
 ## Setup your environment:
 
