@@ -48,10 +48,13 @@ In the `PostgreSQL` command prompt, create your development database, connect it
 
 ```
 postgres=# CREATE DATABASE stylishly-dev;
-```
-```
+
+...
+
 postgres=# \c stylishly-dev;
-```
+
+...
+
 postgres=# CREATE EXTENSION "uuid-ossp";
 ```
 
