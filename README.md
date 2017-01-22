@@ -9,9 +9,10 @@ Repository for [Stylishly](http://stylishly.us/) REST API.
 - [Setup your environment](#setup-your-environment)
 - [Setup your database](#setup-your-database)
 
+
 ## Setup your environment:
 
-Create a dedictated `Stylishly` directory and `cd` into:
+Create a dedictated `Stylishly` directory and `cd` into it:
 
 ```sh
 $ mkdir stylishly && cd stylishly
@@ -24,6 +25,31 @@ $ python3.6 -m venv ./env
 $ source ./env/bin/activate
 ```
 
+You can set your environment variables in the virtual environment `activate` script file, so they get loaded upon activation:
+
+#### Example:
+
+```sh
+$ open ./env/bin/activate
+```
+
+In the `activate` script file:
+
+```sh
+# This file must be used with "source bin/activate" *from bash*
+...
+
+export ENV_VAR=VALUE
+
+...
+```
+
+Clone this repository and `cd` into it:
+
+```sh
+$ git clone git@github.com:lezoudali/stylishly-api.git && cd stylishly-api
+```
+
 Install python dependencies:
 
 ```sh
@@ -32,7 +58,7 @@ $ pip install -r requirements.txt
 
 ## Setup your database
 
-Install [PostgreSQL], you can achieve this with [homebrew](http://brew.sh/):
+Install [PostgreSQL](https://www.postgresql.org/). You can achieve this with [homebrew](http://brew.sh/):
 
 ```sh
 $ brew install postgresql
@@ -44,18 +70,28 @@ Start `PostgreSQL` once it's been installed:
 $ psql
 ```
 
-In the `PostgreSQL` command prompt, create your development database, connect it and create the `uuid-ossp` extension:
+In the `PostgreSQL` command prompt, create your development database, connect to it and create the `uuid-ossp` extension:
 
 ```
 postgres=# CREATE DATABASE stylishly-dev;
 
-...
-
 postgres=# \c stylishly-dev;
 
-...
-
 postgres=# CREATE EXTENSION "uuid-ossp";
+```
+
+Be sure to set the following enviroment variables:
+
+```sh
+export STYLISHLY_DB_DATABASE="stylishly-dev"
+```
+
+If your PostgreSQL database requires a username and password, then set the following variables:
+
+
+```sh
+export STYLISHLY_DB_USERNAME=<username>
+export STYLISHLY_DB_PASSWORD=<password>
 ```
 
 ## Contributing
