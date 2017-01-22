@@ -5,8 +5,9 @@ Repository for [Stylishly](http://stylishly.us/) REST API.
 
 ## Table of Contents
 
-- [Setup](#setup-your-environment)
 - [Contributing](#contributing)
+- [Setup your environment](#setup-your-environment)
+- [Setup your database](#setup-your-database)
 
 ## Setup your environment:
 
@@ -27,6 +28,31 @@ Install python dependencies:
 
 ```sh
 $ pip install -r requirements.txt
+```
+
+## Setup your database
+
+Install [PostgreSQL], you can achieve this with [homebrew](http://brew.sh/):
+
+```sh
+$ brew install postgresql
+```
+
+Start `PostgreSQL` once it's been installed:
+
+```
+$ psql
+```
+
+In the `PostgreSQL` command prompt, create your development database, connect it and create the `uuid-ossp` extension:
+
+```
+postgres=# CREATE DATABASE stylishly-dev;
+```
+```
+postgres=# \c stylishly-dev;
+```
+postgres=# CREATE EXTENSION "uuid-ossp";
 ```
 
 ## Contributing
