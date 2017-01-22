@@ -1,11 +1,16 @@
 from __future__ import with_statement
 
 import os
+import sys
 
 from alembic import context
 from sqlalchemy import engine_from_config, pool
 from sqlalchemy.engine.url import URL
 from logging.config import fileConfig
+
+
+sys.path.insert(0, os.path.realpath(os.path.join(os.path.dirname(__file__),
+                '..', '..')))
 
 from db.core import metadata
 
@@ -31,9 +36,9 @@ target_metadata = metadata
 
 def get_database_url():
     connection_params = {
-        'username': os.getenv('STYLISHLY_DB_USERNAME', 'stylishly'),
-        'password': os.getenv('STYLISHLY_DB_PASSWORD', 'stylishly'),
-        'database': os.getenv('STYLISHLY_DB_DATABASE', 'stylishly'),
+        'username': os.getenv('STYLISHLY_DB_USERNAME'),
+        'password': os.getenv('STYLISHLY_DB_PASSWORD'),
+        'database': os.getenv('STYLISHLY_DB_DATABASE'),
         'host': os.getenv('STYLISHLY_DB_HOST', '127.0.0.1'),
         'port': 5432
     }
@@ -69,8 +74,11 @@ def run_migrations_online():
     and associate a connection with the context.
 
     """
+    alembic_config = config.get_section(config.config_ini_section)
+    alembic_config['sqlalchemy.url'] = get_database_url()
+
     connectable = engine_from_config(
-        config.get_section(config.config_ini_section),
+        alembic_config,
         prefix='sqlalchemy.',
         poolclass=pool.NullPool)
 
