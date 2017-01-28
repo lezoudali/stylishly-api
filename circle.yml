@@ -20,4 +20,4 @@ test:
     - flake8 --exclude db/migrations db stylishly tests:
         files:
           - "*.py"
-          - "./**/*.py"
+          - "**/*.py"
