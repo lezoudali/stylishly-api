@@ -1,0 +1,5 @@
+SQLAlchemy==1.1.5
+alembic==0.8.10
+psycopg2==2.6.2
+
+-r ./requirements-test.txt
