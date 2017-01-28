@@ -1,10 +1,10 @@
 all: clean test
 
 flake:
-	flake8 --exclude db/migrations db tests  # TODO don't forget add other directories
-	if ! isort -c -rc db tests; then \
+	flake8 --exclude db/migrations .  # TODO don't forget add other directories
+	if ! isort -c -rc .; then \
 		echo "Import sort errors, run 'make isort' to fix them!!!"; \
-		isort --diff -rc db tests; \
+		isort --diff -rc .; \
 		false; \
 	fi
 
@@ -12,8 +12,8 @@ isort:
 	isort -rc db  # TODO don't forget add other directories
 	isort -rc tests
 
-test: flake
-	python -m pytest tests/db
+test-db: flake
+	python -m pytest -s --quiet tests/db
 
 clean:
 	rm -rf `find . -name __pycache__`

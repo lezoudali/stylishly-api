@@ -53,7 +53,7 @@ $ git clone git@github.com:lezoudali/stylishly-api.git && cd stylishly-api
 Install python dependencies:
 
 ```sh
-$ pip install -r requirements.txt
+$ pip install -r requirements/all.txt
 ```
 
 ## Setup your database
@@ -93,6 +93,14 @@ If your PostgreSQL database requires a username and password, then set the follo
 export STYLISHLY_DB_USERNAME=<username>
 export STYLISHLY_DB_PASSWORD=<password>
 ```
+
+Perform similar steps to setup your test database, except replace the followings:
+
+`stylishly-dev` => `stylishly-test`
+`STYLISHLY_DB_DATABASE` => `STYLISHLY_TEST_DB_DATABASE`
+`STYLISHLY_DB_USERNAME` => `STYLISHLY_TEST_DB_USERNAME` (if needed)
+`STYLISHLY_DB_PASSWORD` => `STYLISHLY_TEST_DB_PASSWORD` (if needed)
+
 
 ## Contributing
 

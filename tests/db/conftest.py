@@ -15,7 +15,7 @@ def connection_params():
     return {
         'username': os.getenv('STYLISHLY_TEST_DB_USERNAME'),
         'password': os.getenv('STYLISHLY_TEST_DB_PASSWORD'),
-        'database': os.getenv('STYLISHLY_TEST_DB_DATABASE'),
+        'database': os.environ['STYLISHLY_TEST_DB_DATABASE'],
         'host': os.getenv('STYLISHLY_TEST_DB_HOST', '127.0.0.1'),
         'port': 5432
     }
