@@ -2,7 +2,7 @@ machine:
   services:
     - postgresql
   python:
-    version: 3.6
+    version: 3.6.0
   environment:
     STYLISHLY_TEST_DB_USERNAME: ubuntu
     STYLISHLY_TEST_DB_DATABASE: circle_test
@@ -13,7 +13,7 @@ dependencies:
 
 test:
   override:
-    - pytest -s --quiet tests/db:
+    - python -m pytest -s --quiet tests/db:
         parallel: true
         files:
           - "tests/db/*.py"
