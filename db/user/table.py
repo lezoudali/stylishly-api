@@ -1,6 +1,6 @@
 import sqlalchemy as sa
-from db.core import metadata, table_mixins
 
+from db.core import metadata, table_mixins
 
 users_table = sa.Table(
     'users',
