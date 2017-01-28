@@ -1,0 +1,27 @@
+machine:
+  services:
+    - postgresql
+  python:
+    version: 3.6.0
+  environment:
+    STYLISHLY_TEST_DB_USERNAME: ubuntu
+    STYLISHLY_TEST_DB_DATABASE: circle_test
+
+database:
+  post:
+    - psql -c 'CREATE EXTENSION "uuid-ossp";' -d circle_test
+
+dependencies:
+  override:
+    - pip install -r requirements/all.txt
+
+test:
+  override:
+    - python -m pytest -s --quiet tests/db:
+        parallel: true
+        files:
+          - "tests/db/*.py"
+    - flake8 --exclude="db/migrations/*.py" db stylishly tests:
+        files:
+          - "*.py"
+          - "**/*.py"

@@ -1,0 +1,7 @@
+# Code Quality
+
+flake8==3.2.1
+isort==4.2.5
+
+-r ./db/requirements.txt
+-r ./stylishly/requirements.txt
