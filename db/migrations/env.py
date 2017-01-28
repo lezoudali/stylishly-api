@@ -8,10 +8,9 @@ from alembic import context
 from sqlalchemy import engine_from_config, pool
 from sqlalchemy.engine.url import URL
 
-from db.core import metadata
+sys.path.append(os.getcwd())
 
-sys.path.insert(0, os.path.realpath(os.path.join(os.path.dirname(__file__),
-                '..', '..')))
+from db.core import metadata  # flake8: noqa, isort:skip
 
 
 # this is the Alembic Config object, which provides

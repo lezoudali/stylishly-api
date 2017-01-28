@@ -1,15 +1,16 @@
-all: clean test
+all: clean test-db
 
 flake:
-	flake8 --exclude db/migrations .  # TODO don't forget add other directories
-	if ! isort -c -rc .; then \
+	flake8 --exclude db/migrations db stylishly tests
+	if ! isort -c -rc db stylishly tests; then \
 		echo "Import sort errors, run 'make isort' to fix them!!!"; \
-		isort --diff -rc .; \
+		isort --diff -rc db tests stylishly; \
 		false; \
 	fi
 
 isort:
-	isort -rc db  # TODO don't forget add other directories
+	isort -rc db
+	isort -rc stylishly
 	isort -rc tests
 
 test-db: flake
@@ -33,4 +34,4 @@ clean:
 	rm -rf .eggs
 	rm -rf .env
 
-.PHONY: all clean flake test
+.PHONY: all clean flake test-db
