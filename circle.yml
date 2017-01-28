@@ -7,9 +7,9 @@ machine:
     STYLISHLY_TEST_DB_USERNAME: ubuntu
     STYLISHLY_TEST_DB_DATABASE: circle_test
 
-  database:
-    post:
-      - psql -c 'CREATE EXTENSION "uuid-ossp";' -d circle_test
+database:
+  post:
+    - psql -c 'CREATE EXTENSION "uuid-ossp";' -d circle_test
 
 dependencies:
   override:
