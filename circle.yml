@@ -1,0 +1,23 @@
+machine:
+  services:
+    - postgresql
+  python:
+    version: 3.6
+  environment:
+    STYLISHLY_TEST_DB_USERNAME: ubuntu
+    STYLISHLY_TEST_DB_DATABASE: circle_test
+
+dependencies:
+  override:
+    - pip install -r requirements/all.txt
+
+test:
+  override:
+    - pytest -s --quiet tests/db:
+        parallel: true
+        files:
+          - "tests/db/*.py"
+    - flake8 --exclude db/migrations db stylishly tests:
+        files:
+          - "*.py"
+          - "./**/*.py"
