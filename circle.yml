@@ -21,7 +21,7 @@ test:
         parallel: true
         files:
           - "tests/db/*.py"
-    - flake8 --exclude db/migrations db stylishly tests:
+    - flake8 --exclude="db/migrations/*.py" db stylishly tests:
         files:
           - "*.py"
           - "**/*.py"
